@@ -1,4 +1,4 @@
-function saveUserInput(event){
+function saveUserInput(event) {
     event.preventDefault();
     const expenseAmount = document.getElementById("expenseamount").value;
     const description = document.getElementById("description").value;
@@ -8,23 +8,30 @@ function saveUserInput(event){
         description,
         category
     }
+    document.getElementById("expenseamount").value = ""
+    document.getElementById("description").value = ""
+    document.getElementById("category").value = ""
+    
+    
     localStorage.setItem('userInput', JSON.stringify(userInput));
-    showUseOnScreen(userInput);
+        
+    showUserOnScreen(userInput);
+    
 }
 
-function showUseOnScreen(userInput) {
+function showUserOnScreen(userInput) {
     const parentitem = document.getElementById('listOfItems');
     const childItem = document.createElement('li');
-    childItem.textContent = userInput.expenseAmount + ' - ' + userInput.description + ' - ' + userInput.category;
+    childItem.innerHTML = childItem.innerHTML + `${userInput.expenseAmount} - ${userInput.description} - ${userInput.category}`;
     parentitem.appendChild(childItem);
-    
 
     const editButton = document.createElement('input')
     editButton.type = 'button'
     editButton.value = 'Edit'
     editButton.className = 'btn btn-success btn-sm float-right'
+
     editButton.onclick = () => {
-        localStorage.removeItem(userInput.description);
+        localStorage.removeItem('userInput');
         parentitem.removeChild(childItem);
     }
 
@@ -35,9 +42,13 @@ function showUseOnScreen(userInput) {
     deleteButton.value = 'Delete'
     deleteButton.className = 'btn btn-danger btn-sm float-right'
     deleteButton.onclick = () => {
-        localStorage.removeItem(userInput.description);
+        localStorage.removeItem('userInput');
         parentitem.removeChild(childItem);
     }
 
     childItem.appendChild(deleteButton);
 }
+// function updateData(){
+// document.getElementById("Submit").style.display = "none";
+// document.getElementById("Update").style.display = "block";
+// }

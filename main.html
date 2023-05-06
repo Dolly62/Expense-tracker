@@ -13,9 +13,9 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body >
     <div class="container ">
-        <div class="box flex align-items-center d-flex card bg-light card-body ">
+        <div class="flex align-items-center d-flex card bg-light card-body ">
             <h1 id="box ">Expense Tracker</h1>
             <div class="form ">
                 <form onsubmit="saveUserInput(event)" id="addForm">
@@ -40,11 +40,13 @@
                         <option value="payments">Recharge & Bill Payments</option>
                     </select><br>
 
-                    <button type="submit" class="btn btn-success">Add Expense</button>
+                    <button type="submit" id="Submit" class="btn btn-success">Add Expense</button>
+                    <!-- <button type="update" id="Update" onclick="updateData()" class="btn btn-success">Update</button> -->
                 </form>
             </div>
         </div>
     </div>
+    <hr/>
     <ul id="listOfItems"></ul>
 <script src="main.js" ></script>
 </body>
